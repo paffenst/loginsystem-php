@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lora'); 
+
+.form-div,.content{
+    
+    border: 1px solid #80ced7;
+    border-radius: 5px;
+    margin: 50px auto 50px;
+    font-size: 1.2em;
+    padding: 25px 15px 10px 15px;
+    font-family: 'Lora', serif;
+}
+.form-div.login {
+    margin-top:100px;
+}
+.content{
+    border: 1px solid #80ced7;
+    border-radius: 5px;
+    margin: 50px auto 50px;
+    font-size: 1.2em;
+    padding: 25px 15px 10px 15px;
+    font-family: 'Lora', serif;
+}
+.error {
+    width: 90%;
+    margin:0px auto;
+    padding: 15px;
+    border: 1px solid #a94442;
+    color: #a94442;
+    background: #f2dede;
+    border-radius: 5px;
+    text-align: left;
+}
