@@ -116,7 +116,7 @@ if(isset($_POST['signup-btn'])){
   
     // $result_lizenz = "SELECT keyUsers,registriert_am FROM loginsystem.users WHERE registriert_am >= DATE_SUB( NOW(), INTERVAL 365 DAY)";
     if($datumheute>$row['ablaufsdatum']){
-        echo "Lizenz ist abgelaufen!!!"."<br>";
+        echo "<p class='error'>Lizenz ist abgelaufen!!!</p>"."<br>";
     }else{
         echo "Lizenz ist aktiv!"."<br>";
     }
@@ -132,9 +132,9 @@ if(isset($_POST['signup-btn'])){
     }
     if (isset($_SESSION['eingeloggt']) AND $_SESSION['eingeloggt'] == true ){
     // Benutzer begruessen
-    echo "<br>"."<h3>Hallo ". $_SESSION['vornameUsers'] . "</h3>" ."REGISTRIERT AM: ".$row['registriert_am']."<br>" ."Lizenzablaufsdatum ist: ".$row['ablaufsdatum']."<br>" ;
+    // echo "<br>"."<h3>Hallo ". $_SESSION['vornameUsers'] . "</h3>" ."REGISTRIERT AM: ".$row['registriert_am']."<br>" ."Lizenzablaufsdatum ist: ".$row['ablaufsdatum']."<br>" ;
     } else {
-        echo "<br>"."Benutzer ist nicht registriert"."<br>";
+        echo "<br>"."<p class='error'>Benutzer ist nicht registriert</p>"."<br>";
     }
     //var_dump($ablaufsdatum);
     // Zeigt die REG-Key 
