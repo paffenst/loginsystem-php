@@ -85,7 +85,6 @@ if(isset($_POST['signup-btn'])){
         }
     }
 }
-   
     //Validation für Login-Form
     if(isset($_POST['login-btn'])){
      $vornameUsers=$_POST['vornameUsers'];
@@ -103,26 +102,18 @@ if(isset($_POST['signup-btn'])){
   
     $result_login = mysqli_query($conn,"SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' LIMIT 1");
 
-    // $result_lizenz = mysqli_query($conn,"SELECT keyUsers,registriert_am FROM loginsystem.users WHERE registriert_am >= DATE_SUB($regdatum, INTERVAL 365 DAY)" ); 
-    // $reg = mysqli_query($conn, "SELECT * FROM loginsystem.users WHERE 
-    // keyUsers='$keyUsers'");
-    // $mac = mysqli_query($conn, "SELECT * FROM loginsystem.users WHERE 
-    // macUsers='$MACAddress'");
-    // $regdatum = "SELECT vornameUsers,registriert_am FROM loginsystem.users WHERE registriert_am >= '2019-01-01 00:00:00'";
-
     $row = mysqli_fetch_array($result_login);
-    //$row1 = mysqli_fetch_array($reg);
-    //$row2 = mysqli_fetch_array($enddate);
-  
     // $result_lizenz = "SELECT keyUsers,registriert_am FROM loginsystem.users WHERE registriert_am >= DATE_SUB( NOW(), INTERVAL 365 DAY)";
     if($datumheute>$row['ablaufsdatum']){
+        $_SESSION['eingeloggt'] == false;
         echo "<p class='error'>Lizenz ist abgelaufen!!!</p>"."<br>";
     }else{
+        $_SESSION['eingeloggt'] == true;
         echo "Lizenz ist aktiv!"."<br>";
     }
     //$result = mysqli_query($conn,$result_lizenz);
     if($row['vornameUsers'] == $vornameUsers && $row['nameUsers'] == $nameUsers){
-        echo "".$row['vornameUsers']." ist in der Datenbank registriert ! ";    
+     //   echo "".$row['vornameUsers']." ist in der Datenbank registriert ! ";    
         $_SESSION['vornameUsers'] = $_POST['vornameUsers'];
         $_SESSION['eingeloggt'] = true;
     //echo "<b>einloggen erfolgreich</b>";
@@ -134,25 +125,7 @@ if(isset($_POST['signup-btn'])){
     // Benutzer begruessen
     // echo "<br>"."<h3>Hallo ". $_SESSION['vornameUsers'] . "</h3>" ."REGISTRIERT AM: ".$row['registriert_am']."<br>" ."Lizenzablaufsdatum ist: ".$row['ablaufsdatum']."<br>" ;
     } else {
+        $_SESSION['eingeloggt'] == false;
         echo "<br>"."<p class='error'>Benutzer ist nicht registriert</p>"."<br>";
     }
-    //var_dump($ablaufsdatum);
-    // Zeigt die REG-Key 
-    // if (mysqli_num_rows($result)) {
-    //     // Lesen jede Zeile
-    //     while($row = $result->fetch_assoc()) {
-    //         echo " REG-Key: " . $row["keyUsers"]." registriert am: ".$row["registriert_am"].  "<br>";
-    //     }
-    //     mysqli_free_result($result);
-    // } else {
-    //     echo "0 results";
-    // }
-    // function linenzCheck($regdatum,$ablaufsdatum){
-    //     if($regdatum<=$ablaufsdatum){
-    //         echo "Lizenz ist abgelaugen!!! Bitte erneuern";
-    //     }else{
-    //         echo "Lizenz ist aktiv !!!";
-
-    //     }
-    // }
 }
