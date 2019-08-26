@@ -73,7 +73,7 @@ if(isset($_POST['signup-btn'])){
         $stmt->bind_param('sssssss',$vornameUsers,$nameUsers,$emailUsers,$keyUsers,$MACAddress,$regdatum,$ablaufsdatum);
         if ($stmt->execute()){
              $user_id = $conn->insert_id;
-             $_SESSION['idUsers'] = $user_id; 
+             $_SESSION['idUsers'] = $user_id;
              $_SESSION['vornameUsers'] = $vornameUsers;
              $_SESSION['nameUsers'] = $nameUsers;
              $_SESSION['emailUsers'] = $emailUsers;   
@@ -81,7 +81,7 @@ if(isset($_POST['signup-btn'])){
              $_SESSION['macUsers']= $MACAddress;
              $_SESSION['registriert_am']= $regdatum;
              $_SESSION['ablaufsdatum']= $ablaufsdatum;
-
+             
         }
     }
 }
@@ -116,6 +116,7 @@ if(isset($_POST['signup-btn'])){
      //   echo "".$row['vornameUsers']." ist in der Datenbank registriert ! ";    
         $_SESSION['vornameUsers'] = $_POST['vornameUsers'];
         $_SESSION['eingeloggt'] = true;
+        header('locataion:'.$_SESSION['redirectURL']);
     //echo "<b>einloggen erfolgreich</b>";
     } else{
         $_SESSION['eingeloggt'] = false;
