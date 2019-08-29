@@ -102,10 +102,11 @@ if(isset($_POST['signup-btn'])){
   
     $result_login = mysqli_query($conn,"SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' LIMIT 1");
 
+    $mac = mysqli_query($conn, "SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' AND macUsers='$MACAddress'");
+
     $row = mysqli_fetch_array($result_login);
     $roww = mysqli_fetch_array($mac);
 
-    $mac = mysqli_query($conn, "SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' AND macUsers='$MACAddress'");
     if($datumheute>$row['ablaufsdatum']){
         $_SESSION['eingeloggt'] == false;
         echo "<p class='error'>Lizenz ist abgelaufen!!!</p>"."<br>";
