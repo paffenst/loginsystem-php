@@ -102,21 +102,24 @@ if(isset($_POST['signup-btn'])){
   
     $result_login = mysqli_query($conn,"SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' LIMIT 1");
 
+    $mac = mysqli_query($conn, "SELECT * FROM loginsystem.users WHERE vornameUsers='$vornameUsers' AND nameUsers='$nameUsers' AND macUsers='$MACAddress'");
+
     $row = mysqli_fetch_array($result_login);
-    // $result_lizenz = "SELECT keyUsers,registriert_am FROM loginsystem.users WHERE registriert_am >= DATE_SUB( NOW(), INTERVAL 365 DAY)";
+    $roww = mysqli_fetch_array($mac);
+
     if($datumheute>$row['ablaufsdatum']){
         $_SESSION['eingeloggt'] == false;
         echo "<p class='error'>Lizenz ist abgelaufen!!!</p>"."<br>";
     }else{
         $_SESSION['eingeloggt'] == true;
-        echo "Lizenz ist aktiv!"."<br>";
+        echo "<p class='aktiv'>Lizenz ist aktiv !!!</p>"."<br>";
     }
     //$result = mysqli_query($conn,$result_lizenz);
     if($row['vornameUsers'] == $vornameUsers && $row['nameUsers'] == $nameUsers){
      //   echo "".$row['vornameUsers']." ist in der Datenbank registriert ! ";    
         $_SESSION['vornameUsers'] = $_POST['vornameUsers'];
         $_SESSION['eingeloggt'] = true;
-        header('locataion:'.$_SESSION['redirectURL']);
+     //   header('locataion:'.$_SESSION['redirectURL']);
     //echo "<b>einloggen erfolgreich</b>";
     } else{
         $_SESSION['eingeloggt'] = false;
