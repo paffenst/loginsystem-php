@@ -127,7 +127,7 @@ if(isset($_POST['signup-btn'])){
     }
     if (isset($_SESSION['eingeloggt']) AND $_SESSION['eingeloggt'] == true ){
     // Benutzer begruessen
-    // echo "<br>"."<h3>Hallo ". $_SESSION['vornameUsers'] . "</h3>" ."REGISTRIERT AM: ".$row['registriert_am']."<br>" ."Lizenzablaufsdatum ist: ".$row['ablaufsdatum']."<br>" ;
+     echo "<br>"."<h3>Hallo ". $_SESSION['vornameUsers'] . "</h3>" ."REGISTRIERT AM: ".$row['registriert_am']."<br>" ."Lizenzablaufsdatum ist: ".$row['ablaufsdatum']."<br>" ;
     } else {
         $_SESSION['eingeloggt'] == false;
         echo "<br>"."<p class='error'>Benutzer ist nicht registriert</p>"."<br>";
