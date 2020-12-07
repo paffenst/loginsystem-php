@@ -7,6 +7,7 @@ $vornameUsers = " ";
 $nameUsers = " ";
 $emailUsers = " ";
 $keyUsers = " ";
+$counter = 0;
 
 $datumheute = date('Y-m-d') . "<br/>";
 //echo "Datum heute: ".$datumheute;
@@ -117,6 +118,8 @@ if (isset($_POST['login-btn'])) {
         //   echo "".$row['vornameUsers']." ist in der Datenbank registriert ! ";    
         $_SESSION['vornameUsers'] = $_POST['vornameUsers'];
         $_SESSION['eingeloggt'] = true;
+        $sql_counter = " UPDATE loginsystem.users SET counter=counter+1 WHERE vornameUsers='$vornameUsers' ";
+        $eintrag = mysqli_query($conn, $sql_counter);
         //   header('locataion:'.$_SESSION['redirectURL']);
         //echo "<b>einloggen erfolgreich</b>";
     } else {
