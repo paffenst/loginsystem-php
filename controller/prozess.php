@@ -133,4 +133,9 @@ if (isset($_POST['login-btn'])) {
         $_SESSION['eingeloggt'] == false;
         echo "<br>" . "<p class='error'>Benutzer ist nicht registriert</p>" . "<br>";
     }
+    if ($roww['macUsers'] != $MACAddress) {
+        //echo $MACAddress;
+        $_SESSION['eingeloggt'] = FALSE;
+        echo "<br>" . "<p class='error'>Benutzer ist nicht mit seiner registrierten MAC-Adresse eingeloggt !!!</p>" . "<br>";
+    }
 }
